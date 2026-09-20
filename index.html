@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Adriana Coletta — graphic designer. Visual identity e grafiche per i social media.">
+<title>Adriana Coletta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@600;700&display=swap">
+<style>
+  :root {
+    --ink: #1f1147;
+    --orange: #c9b6ff;
+    --lemon: #ffe66d;
+    --mint: #9be8c8;
+    --pink: #ff6b9a;
+    --sky: #ffb26b;
+    --white: #fffdf7;
+    --bg: var(--orange);
+    --bg-grad:
+      radial-gradient(55% 40% at 95% 4%, #ff9fcf 0%, rgba(255,159,207,0) 72%),
+      radial-gradient(50% 40% at 0% 45%, #9fd0ff 0%, rgba(159,208,255,0) 72%),
+      radial-gradient(60% 40% at 100% 88%, #ffc9a3 0%, rgba(255,201,163,0) 72%),
+      radial-gradient(55% 40% at 8% 100%, #8fb5ff 0%, rgba(143,181,255,0) 72%),
+      linear-gradient(170deg, #c9b6ff 0%, #d6bcff 45%, #ffc4e6 100%);
+    --display: "Bricolage Grotesque", "Arial Black", Arial, sans-serif;
+    --hand: "Caveat", "Comic Sans MS", cursive;
+    --gutter: clamp(16px, 4vw, 56px);
+    --border: 3px solid var(--ink);
+    color-scheme: light;
+  }
+  body[data-page="lavori"] {
+    --bg: var(--lemon);
+    --bg-grad:
+      radial-gradient(55% 45% at 95% 4%, #ff9a7a 0%, rgba(255,154,122,0) 72%),
+      radial-gradient(50% 45% at 0% 60%, #ffb3d9 0%, rgba(255,179,217,0) 72%),
+      radial-gradient(55% 45% at 100% 100%, #c9b6ff 0%, rgba(201,182,255,0) 72%),
+      linear-gradient(170deg, #ffe66d 0%, #ffd58a 50%, #ffc0d8 100%);
+  }
+  body[data-page="contatti"] {
+    --bg: var(--mint);
+    --bg-grad:
+      radial-gradient(55% 45% at 95% 4%, #8fd0ff 0%, rgba(143,208,255,0) 72%),
+      radial-gradient(50% 45% at 0% 65%, #d2bfff 0%, rgba(210,191,255,0) 72%),
+      radial-gradient(55% 45% at 100% 100%, #ffe9a0 0%, rgba(255,233,160,0) 72%),
+      linear-gradient(170deg, #9be8c8 0%, #a9e6dc 50%, #b9dcff 100%);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-grad), var(--bg);
+    background-repeat: no-repeat;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.45;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+  .wrap { width: 100%; max-width: 1400px; margin-inline: auto; padding-inline: var(--gutter); }
+  .page[hidden] { display: none !important; }
+
+  /* ---------- pulsanti e pillole ---------- */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: inherit;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    padding: 14px 24px;
+    border: var(--border);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--ink);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+  .pill:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .pill:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .pill.solid { background: linear-gradient(120deg, var(--ink) 0%, #4b2a9a 100%); color: var(--lemon); }
+  .pill[aria-pressed="true"], .pill[aria-current="page"] { background: var(--ink); color: var(--lemon); }
+
+  /* ---------- header ---------- */
+  header { padding-block: 20px; }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px 24px; }
+  .brand {
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: linear-gradient(120deg, var(--lemon), #ffc3d9);
+    border: var(--border);
+    border-radius: 999px;
+    box-shadow: 4px 4px 0 var(--ink);
+    rotate: -2deg;
+    transition: rotate 0.2s ease;
+  }
+  .brand:hover { rotate: 2deg; }
+  nav { display: flex; gap: 10px; flex-wrap: wrap; }
+  nav .pill { padding: 12px 20px; font-size: 17px; }
+
+  /* ---------- titoli ---------- */
+  .mega {
+    margin: 0;
+    font-weight: 800;
+    font-size: clamp(46px, 11.5vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .mega .wavy {
+    text-decoration: underline wavy;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
+    text-decoration-color: var(--white);
+    text-decoration-skip-ink: none;
+  }
+  .mega.home-title { font-size: clamp(40px, 8.4vw, 124px); }
+  .lead { max-width: 24em; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3; font-weight: 500; margin: 44px 0 0; }
+  .hand {
+    font-family: var(--hand);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 36px; }
+
+  /* ---------- hero con adesivi trascinabili ---------- */
+  .hero { position: relative; padding-block: clamp(24px, 5vw, 64px) clamp(48px, 8vw, 96px); }
+  .stickers { position: absolute; inset: 0; pointer-events: none; }
+  .sticker {
+    position: absolute;
+    pointer-events: auto;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    rotate: var(--r, 0deg);
+    filter: drop-shadow(4px 4px 0 var(--ink));
+    transition: rotate 0.2s ease;
+  }
+  .sticker:hover { rotate: calc(var(--r, 0deg) + 6deg); }
+  .sticker.drag { cursor: grabbing; z-index: 5; }
+  .sticker svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .s1 { right: 8%; bottom: 6%; width: clamp(96px, 16vw, 210px); --r: 12deg; }
+  .s3 { right: 27%; bottom: 8%; width: clamp(64px, 9vw, 120px); --r: 8deg; }
+  .drag-hint {
+    position: absolute;
+    right: 9%;
+    bottom: calc(6% + clamp(96px, 16vw, 210px) + 4px);
+    rotate: -6deg;
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .s1 { right: 2%; bottom: -36px; width: 80px; }
+    .s3 { right: 30%; bottom: -34px; width: 60px; }
+    .drag-hint { display: none; }
+  }
+
+  /* ---------- striscia scorrevole ---------- */
+  .band {
+    background: linear-gradient(90deg, var(--ink) 0%, #3f2190 50%, var(--ink) 100%);
+    color: var(--lemon);
+    border-block: var(--border);
+    rotate: -1.6deg;
+    margin-inline: -4vw;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .band-track { display: inline-flex; animation: slide 34s linear infinite; }
+  .band-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 16px 14px;
+    font-weight: 800;
+    font-size: clamp(24px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .band-item i {
+    width: 1em; height: 1em;
+    background: var(--pink);
+    clip-path: polygon(50.0% 0.0%, 60.3% 21.8%, 82.1% 11.7%, 76.0% 35.0%, 99.2% 41.3%, 79.5% 55.2%, 93.3% 75.0%, 69.3% 73.0%, 67.1% 97.0%, 50.0% 80.0%, 32.9% 97.0%, 30.7% 73.0%, 6.7% 75.0%, 20.5% 55.2%, 0.8% 41.3%, 24.0% 35.0%, 17.9% 11.7%, 39.7% 21.8%);
+    flex: none;
+  }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .band-wrap { padding-block: 28px; overflow: hidden; }
+
+  /* ---------- sezioni ---------- */
+  .section { padding-block: clamp(48px, 8vw, 104px) 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 16px 24px; margin-bottom: clamp(24px, 4vw, 48px); }
+  h2.big { margin: 0; font-weight: 800; font-size: clamp(36px, 6.5vw, 84px); line-height: 0.98; letter-spacing: -0.04em; }
+  .note { margin: 12px 0 0; }
+
+  /* ---------- card lavori ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: clamp(20px, 3vw, 40px); }
+  .card {
+    background: var(--white);
+    border: var(--border);
+    border-radius: 28px;
+    box-shadow: 7px 7px 0 var(--ink);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover { transform: translate(-3px, -3px) rotate(-1.2deg); box-shadow: 11px 11px 0 var(--ink); }
+  .card:nth-child(even):hover { transform: translate(-3px, -3px) rotate(1.2deg); }
+  .cover { border-bottom: var(--border); aspect-ratio: 4 / 3; }
+  .cover svg { display: block; width: 100%; height: 100%; }
+  .meta { padding: 18px 20px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+  .meta h3 { flex: 1 1 100%; margin: 0; font-weight: 800; font-size: 30px; line-height: 1.05; letter-spacing: -0.03em; }
+  .tag {
+    font-size: 15px; font-weight: 600; line-height: 1;
+    padding: 8px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--mint);
+  }
+  .yr, .go { font-family: var(--hand); font-size: 26px; font-weight: 700; line-height: 1; margin-left: auto; }
+  a.card { display: block; color: inherit; text-decoration: none; cursor: pointer; }
+  .cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; }
+
+  /* ---------- pagina progetto ---------- */
+  .back { margin-bottom: clamp(28px, 4vw, 48px); }
+  .story { margin-top: clamp(28px, 4vw, 44px); max-width: 32em; }
+  .story p { margin: 0 0 24px; font-size: clamp(21px, 2.3vw, 26px); line-height: 1.4; font-weight: 500; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 28px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 18px 8px 8px; background: var(--white);
+    border: var(--border); border-radius: 999px; box-shadow: 3px 3px 0 var(--ink);
+    font-weight: 700; font-size: 18px; line-height: 1;
+  }
+  .chip i { display: block; width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--ink); background: var(--c); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: clamp(24px, 3vw, 40px); margin-top: clamp(36px, 5vw, 64px); }
+  .shots figure { margin: 0; }
+  .shots img {
+    display: block; width: 100%; height: auto;
+    border: var(--border); border-radius: 22px; box-shadow: 7px 7px 0 var(--ink);
+    background: var(--white);
+  }
+  .card.hide { display: none; }
+  .folder .cover { position: relative; background: linear-gradient(150deg, var(--sky) 0%, #ff9fc4 100%); padding: 46px 26px 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-content: center; }
+  .folder .cover::before {
+    content: ""; position: absolute; left: 0; top: 0; width: 46%; height: 30px;
+    background: var(--white); border-right: var(--border); border-bottom: var(--border); border-bottom-right-radius: 18px;
+  }
+  .folder .cover img { aspect-ratio: 3 / 4; height: auto; object-position: 50% 10%; border: 2px solid var(--ink); border-radius: 12px; background: var(--white); }
+  .folder .cover img:nth-child(odd) { rotate: -3deg; }
+  .folder .cover img:nth-child(even) { rotate: 3deg; }
+  .folder .cover .empty { grid-column: 1 / -1; text-align: center; font-family: var(--hand); font-weight: 700; font-size: 34px; line-height: 1; rotate: -3deg; }
+  .empty-note { font-family: var(--hand); font-weight: 700; font-size: 34px; margin: 8px 0 0; grid-column: 1 / -1; }
+
+    #all { margin-top: clamp(28px, 4vw, 44px); }
+
+  /* ---------- lavagna ---------- */
+  .board-box { background: var(--white); border: var(--border); border-radius: 28px; box-shadow: 7px 7px 0 var(--ink); overflow: hidden; }
+  #board { display: block; width: 100%; height: clamp(240px, 42vw, 420px); touch-action: none; cursor: crosshair; background: var(--white); }
+  .board-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 16px 20px; border-top: var(--border); background: var(--lemon); }
+  .swatch { width: 38px; height: 38px; border-radius: 50%; border: var(--border); cursor: pointer; padding: 0; }
+  .swatch[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--lemon), 0 0 0 6px var(--ink); }
+  .board-tools .pill { margin-left: auto; padding: 10px 18px; font-size: 16px; }
+
+  /* ---------- contatti ---------- */
+  .contact { list-style: none; margin: clamp(32px, 5vw, 56px) 0 0; padding: 0; display: grid; gap: 24px; max-width: 900px; }
+  .contact li {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px;
+    background: var(--white); border: var(--border); border-radius: 28px; box-shadow: 7px 7px 0 var(--ink);
+    padding: 22px 28px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .contact li:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--ink); }
+  .contact .k { font-family: var(--hand); font-size: 30px; font-weight: 700; }
+  .contact a { font-weight: 800; font-size: clamp(22px, 4.4vw, 44px); letter-spacing: -0.03em; text-decoration: none; overflow-wrap: anywhere; line-height: 1.1; }
+  .contact a:hover { text-decoration: underline wavy; text-underline-offset: 6px; }
+
+  /* ---------- footer ---------- */
+  main { flex: 1; padding-bottom: clamp(56px, 8vw, 112px); }
+  footer { background: var(--ink); color: var(--lemon); padding-block: 28px; font-size: 16px; font-weight: 500; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; }
+  footer a { text-decoration: none; font-weight: 700; }
+
+
+  /* ---------- griglia di sfondo ---------- */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(31, 17, 71, 0.12) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, rgba(31, 17, 71, 0.12) 1.5px, transparent 1.5px);
+    background-size: 84px 84px;
+  }
+  body > * { position: relative; z-index: 1; }
+  @media (max-width: 720px) { body::before { background-size: 60px 60px; } }
+
+  /* ---------- piu gradienti ---------- */
+  .mega, h2.big {
+    background: linear-gradient(95deg, var(--ink) 0%, #4b2a9a 55%, #b0247a 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+  .mega .wavy { -webkit-text-fill-color: transparent; }
+  .card { background: linear-gradient(180deg, var(--white) 0%, #fff3fb 100%); }
+  .card:nth-child(even) { background: linear-gradient(180deg, var(--white) 0%, #eef3ff 100%); }
+  .tag { background: linear-gradient(120deg, var(--mint), #a9d8ff); }
+  .chip { background: linear-gradient(120deg, var(--white), #f1e8ff); }
+  .contact li { background: linear-gradient(120deg, var(--white) 30%, #ffe3f1 100%); }
+  .contact li:nth-child(even) { background: linear-gradient(120deg, var(--white) 30%, #e2eeff 100%); }
+  .folder .cover { background: linear-gradient(150deg, var(--sky) 0%, #ff9fc4 55%, #b9a4ff 100%); }
+  .board-tools { background: linear-gradient(100deg, var(--lemon) 0%, #ffc3d9 60%, #c9b6ff 100%); }
+  .pill:hover { background: linear-gradient(120deg, #ffe66d, #ff9ec7); }
+  .pill.solid:hover { background: linear-gradient(120deg, var(--ink), #b0247a); }
+  .pill[aria-pressed="true"], .pill[aria-current="page"] { background: linear-gradient(120deg, var(--ink), #4b2a9a); }
+  footer { background: linear-gradient(95deg, var(--ink) 0%, #3f2190 60%, #7a2a9a 100%); }
+  .shots img { background: linear-gradient(150deg, #ffe3f1, #e2eeff); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .band-track { animation: none; }
+    .card, .pill, .sticker, .brand, .contact li { transition: none; }
+    .card:hover, .card:nth-child(even):hover { transform: none; }
+    .sticker:hover { rotate: var(--r, 0deg); }
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#home">Adriana Coletta</a>
+    <nav aria-label="Menu principale">
+      <a class="pill" href="#home" data-nav="home">Home</a>
+      <a class="pill" href="#lavori" data-nav="lavori">Lavori</a>
+      <a class="pill" href="#contatti" data-nav="contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section class="page" id="home">
+    <div class="wrap hero">
+      <div class="stickers" aria-hidden="true">
+        <div class="sticker s1" id="st-burst"></div>
+        <div class="sticker s3" id="st-flower"></div>
+        <span class="hand drag-hint">trascinami!</span>
+      </div>
+      <h1 class="mega home-title">Ciao, sono Adriana.<br>Progetto contenuti che&nbsp;si&nbsp;fanno <span class="wavy">notare</span>.</h1>
+      <p class="lead">Graphic designer.<br>Creo identità e grafiche per i social media.</p>
+      <div class="btn-row">
+        <a class="pill solid" href="#lavori">Guarda i lavori</a>
+        <a class="pill" href="#contatti">Scrivimi</a>
+      </div>
+    </div>
+
+    <div class="band-wrap" aria-hidden="true">
+      <div class="band"><div class="band-track" id="track"></div></div>
+    </div>
+
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 class="big">Ultimi lavori</h2>
+        <a class="pill solid" href="#lavori">Vedi tutti</a>
+      </div>
+      <div class="grid" id="featured"></div>
+    </div>
+
+    <div class="wrap section">
+      <div class="section-head">
+        <div>
+          <h2 class="big">La lavagna</h2>
+          <p class="hand note">scarabocchia qualcosa: il disegno resta solo sul tuo schermo</p>
+        </div>
+      </div>
+      <div class="board-box">
+        <canvas id="board" aria-label="Lavagna per scarabocchiare"></canvas>
+        <div class="board-tools">
+          <span class="hand">colore</span>
+          <button class="swatch" type="button" data-c="#1f1147" style="background:#1f1147" aria-label="Viola scuro" aria-pressed="true"></button>
+          <button class="swatch" type="button" data-c="#c9a7ff" style="background:#c9a7ff" aria-label="Lilla" aria-pressed="false"></button>
+          <button class="swatch" type="button" data-c="#ff4d3d" style="background:#ff4d3d" aria-label="Rosso" aria-pressed="false"></button>
+          <button class="swatch" type="button" data-c="#8fe3c0" style="background:#8fe3c0" aria-label="Menta" aria-pressed="false"></button>
+          <button class="pill" type="button" id="clear">Cancella</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAVORI -->
+  <section class="page" id="lavori" hidden>
+    <div class="wrap hero" style="padding-bottom:0">
+      <h1 class="mega">Lavori</h1>
+      <div class="grid" id="all"></div>
+    </div>
+  </section>
+
+  <!-- CARTELLA -->
+  <section class="page" id="cartella" hidden>
+    <div class="wrap hero" style="padding-bottom:0">
+      <a class="pill back" href="#lavori">← Lavori</a>
+      <h1 class="mega" id="fd-title"></h1>
+      <p class="lead" id="fd-meta"></p>
+      <div class="grid" id="fd-grid" style="margin-top:clamp(28px,4vw,44px)"></div>
+    </div>
+  </section>
+
+  <!-- PROGETTO -->
+  <section class="page" id="progetto" hidden>
+    <div class="wrap hero" style="padding-bottom:0">
+      <a class="pill back" id="pj-back" href="#lavori">← Visual identity</a>
+      <h1 class="mega" id="pj-title"></h1>
+      <p class="lead" id="pj-meta"></p>
+      <div class="story" id="pj-story"></div>
+      <div class="shots" id="pj-shots"></div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="page" id="contatti" hidden>
+    <div class="wrap hero" style="padding-bottom:0">
+      <h1 class="mega">Scrivimi,<br>non mordo.</h1>
+      <p class="lead">Hai un progetto in mente? Raccontamelo in due righe e ti rispondo presto.</p>
+      <ul class="contact">
+        <li><span class="k">email</span><a id="mail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=adrianacolettadesign@gmail.com&su=Ciao%20Adriana" target="_blank" rel="noopener">adrianacolettadesign@gmail.com</a></li>
+        <li><span class="k">instagram</span><a href="https://www.instagram.com/coletta__design/" target="_blank" rel="noopener">@coletta__design</a></li>
+      </ul>
+      <div class="btn-row">
+        <a class="pill solid" id="mail-gmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=adrianacolettadesign@gmail.com&su=Ciao%20Adriana" target="_blank" rel="noopener">Scrivimi con Gmail</a>
+        <button class="pill" type="button" id="mail-copy">Copia indirizzo</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>©2026 Adriana Coletta. Tutti i diritti riservati.</span>
+    <a href="#home">Torna su</a>
+  </div>
+</footer>
+
+<script>
+  var INK = "#1f1147";
+
+  /* ---------- forme ---------- */
+  function burst(cx, cy, r1, r2, n) {
+    var pts = [];
+    for (var i = 0; i < n * 2; i++) {
+      var a = (Math.PI * i) / n - Math.PI / 2;
+      var r = i % 2 ? r2 : r1;
+      pts.push((cx + r * Math.cos(a)).toFixed(1) + "," + (cy + r * Math.sin(a)).toFixed(1));
+    }
+    return pts.join(" ");
+  }
+  var ST = 'stroke="' + INK + '" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"';
+
+  function stickerBurst() {
+    return '<svg viewBox="0 0 200 200"><polygon points="' + burst(100, 100, 96, 68, 14) + '" fill="#ffe38a" ' + ST + '/>' +
+      '<text x="100" y="112" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="44" fill="' + INK + '">ciao!</text></svg>';
+  }
+  function petals(cx, cy, dist, r, n, fill) {
+    var s = "";
+    for (var i = 0; i < n; i++) {
+      var a = (Math.PI * 2 * i) / n;
+      s += '<circle cx="' + (cx + dist * Math.cos(a)).toFixed(1) + '" cy="' + (cy + dist * Math.sin(a)).toFixed(1) + '" r="' + r + '" fill="' + fill + '" ' + ST + '/>';
+    }
+    return s;
+  }
+  function stickerFlower() {
+    return '<svg viewBox="0 0 200 200">' + petals(100, 100, 52, 36, 8, "#a9d8ff") +
+      '<circle cx="100" cy="100" r="34" fill="#ff8fb8" ' + ST + '/></svg>';
+  }
+  document.getElementById("st-burst").innerHTML = stickerBurst();
+  document.getElementById("st-flower").innerHTML = stickerFlower();
+
+  /* ---------- adesivi trascinabili ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".sticker"), function (el) {
+    var sx = 0, sy = 0, ox = 0, oy = 0, down = false;
+    el.addEventListener("pointerdown", function (e) {
+      down = true; el.classList.add("drag");
+      el.setPointerCapture(e.pointerId);
+      sx = e.clientX; sy = e.clientY;
+      ox = parseFloat(el.dataset.x || 0); oy = parseFloat(el.dataset.y || 0);
+      e.preventDefault();
+    });
+    el.addEventListener("pointermove", function (e) {
+      if (!down) return;
+      var x = ox + e.clientX - sx, y = oy + e.clientY - sy;
+      el.dataset.x = x; el.dataset.y = y;
+      el.style.translate = x + "px " + y + "px";
+    });
+    function up() { down = false; el.classList.remove("drag"); }
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
+  });
+
+  /* ---------- striscia ---------- */
+  var WORDS = ["Visual identity", "Social graphics", "Logo design", "Grafica con carattere"];
+  var one = WORDS.map(function (w) { return '<span class="band-item">' + w + '<i></i></span>'; }).join("");
+  document.getElementById("track").innerHTML = one + one + one + one;
+
+  /* ---------- lavori di esempio ---------- */
+  var WORKS = [
+    { t: "Raìz", slug: "raiz", c: "Visual identity", y: "", sub: "Concept per un marchio di skincare naturale",
+      story: [
+        "Raìz, in galiziano, vuol dire radice. Da lì parte tutto: una pelle curata bene, senza troppe promesse, come si cura una pianta.",
+        "I colori sono quelli di un sottobosco al mattino: verde scuro, terra, miele, un bianco caldo che sa di carta.",
+        { colors: [ { n: "Sage", c: "#233027" }, { n: "Fortress", c: "#180a07" }, { n: "Honeymoon", c: "#a28340" }, { n: "Ethereal", c: "#dcd4c1" } ] }
+      ],
+      imgs: [
+        { f: "img/raiz-1.jpg", a: "Copertina Raìz Natural Skincare con logo su primo piano di pelle" },
+        { f: "img/raiz-2.jpg", a: "Collage di volti e mani con la texture della crema" },
+        { f: "img/raiz-3.jpg", a: "Moodboard: prodotti, palette Sage, Fortress, Honeymoon, Ethereal, font Poppins" },
+        { f: "img/raiz-4.jpg", a: "Take care of yourself, testo su fotografia" },
+        { f: "img/raiz-5.jpg", a: "Confezione Raìz su fondo scuro" },
+        { f: "img/raiz-6.jpg", a: "Biglietti da visita verdi con il simbolo a stella" },
+        { f: "img/raiz-7.jpg", a: "Post Instagram Raìz Official su foglia verde" },
+        { f: "img/raiz-8.jpg", a: "Griglia di immagini: prodotti, pelle, foglie, Wake up Skincare Eat Repeat" },
+        { f: "img/raiz-9.jpg", a: "Cartellone pubblicitario: From nature to your skin" }
+      ] },
+    { t: "Pizzico", slug: "pizzico", c: "Visual identity", y: "", sub: "Concept per una pizzeria da asporto",
+      story: [
+        "Il nome gioca su due cose. Un pizzico è quel poco che basta a farti venire voglia del resto, e la fetta si mangia così, in piedi, in due morsi. Il logo lo racconta senza spiegarlo: alla O manca uno spicchio, come se qualcuno l'avesse già assaggiata.",
+        "I colori non arrivano da una palette, arrivano dalla cucina. Pomodoro, basilico, formaggio, impasto: quattro ingredienti, quattro colori, ognuno preso da quello che gli dà il nome. Il logo cambia sfondo e tinta e resta riconoscibile, come una pizza cambia ripieno senza smettere di essere pizza.",
+        { colors: [ { n: "Pomodoro", c: "#e8432d" }, { n: "Basilico", c: "#008246" }, { n: "Formaggio", c: "#ffd401" }, { n: "Impasto", c: "#d6c3a5" } ] },
+        "Tutti ne vogliono un pizzico."
+      ],
+      imgs: [
+        { f: "img/pizzico-1.jpg", a: "Locandina Pizzico con il logo e una fetta di pizza" },
+        { f: "img/pizzico-2.jpg", a: "Logotipo principale Pizzico, pizzeria da asporto" },
+        { f: "img/pizzico-3.jpg", a: "Ragazzo che addenta una fetta di pizza, con il logo Pizzico" },
+        { f: "img/pizzico-4.jpg", a: "Palette colori: pomodoro, basilico, formaggio, impasto" },
+        { f: "img/pizzico-5.jpg", a: "Il logo Pizzico in quattro versioni di colore" },
+        { f: "img/pizzico-6.jpg", a: "Tessera fedeltà Pizzico, fronte e retro" },
+        { f: "img/pizzico-7.jpg", a: "T-shirt con il logo Pizzico e le illustrazioni" },
+        { f: "img/pizzico-8.jpg", a: "Campagna: Tutti ne vogliono un pizzico" },
+        { f: "img/pizzico-9.jpg", a: "Moodboard con logo, colori, font e fotografie" }
+      ] },
+  ];
+
+  function shape(w) {
+    var a = w.a, b = w.b, o = "";
+    var st = ST;
+    switch (w.s) {
+      case "circle":
+        o = '<circle cx="190" cy="160" r="105" fill="' + a + '" ' + st + '/><circle cx="320" cy="70" r="38" fill="' + b + '" ' + st + '/>'; break;
+      case "arch":
+        o = '<path d="M105 280 V160 A95 95 0 0 1 295 160 V280 Z" fill="' + a + '" ' + st + '/><circle cx="200" cy="170" r="34" fill="' + b + '" ' + st + '/>'; break;
+      case "burst":
+        o = '<polygon points="' + burst(200, 150, 128, 88, 12) + '" fill="' + a + '" ' + st + '/><circle cx="200" cy="150" r="42" fill="' + b + '" ' + st + '/>'; break;
+      case "flower":
+        o = petals(200, 150, 60, 46, 8, a) + '<circle cx="200" cy="150" r="42" fill="' + b + '" ' + st + '/>'; break;
+      case "stripes":
+        o = '<rect x="50" y="50" width="300" height="46" rx="23" fill="' + a + '" ' + st + '/><rect x="50" y="127" width="230" height="46" rx="23" fill="' + b + '" ' + st + '/><rect x="50" y="204" width="300" height="46" rx="23" fill="' + a + '" ' + st + '/>'; break;
+      case "squares":
+        o = '<rect x="90" y="70" width="150" height="150" rx="14" fill="' + a + '" transform="rotate(-10 165 145)" ' + st + '/><rect x="170" y="100" width="130" height="130" rx="14" fill="' + b + '" transform="rotate(12 235 165)" ' + st + '/>'; break;
+      case "tri":
+        o = '<polygon points="200,45 340,255 60,255" fill="' + a + '" ' + st + '/><circle cx="200" cy="190" r="34" fill="' + b + '" ' + st + '/>'; break;
+      case "half":
+        o = '<path d="M60 250 A140 140 0 0 1 340 250 Z" fill="' + a + '" ' + st + '/><circle cx="200" cy="112" r="40" fill="' + b + '" ' + st + '/>'; break;
+    }
+    return o;
+  }
+  function cover(w) {
+    return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Anteprima segnaposto">' +
+      '<rect width="400" height="300" fill="' + w.bg + '"/>' + shape(w) + '</svg>';
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (m) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]; });
+  }
+  function card(w) {
+    var yr = w.y ? '<span class="yr">' + esc(w.y) + '</span>' : '';
+    if (w.imgs) {
+      return '<a class="card" href="#p-' + esc(w.slug) + '"><div class="cover"><img src="' + esc(w.imgs[0].f) + '" alt="' + esc(w.imgs[0].a) + '" loading="lazy"></div>' +
+        '<div class="meta"><h3>' + esc(w.t) + '</h3><span class="tag">' + esc(w.c) + '</span>' + yr + '<span class="go">Apri →</span></div></a>';
+    }
+    return '<article class="card" data-cat="' + esc(w.c) + '"><div class="cover">' + cover(w) + '</div>' +
+      '<div class="meta"><h3>' + esc(w.t) + '</h3><span class="tag">' + esc(w.c) + '</span>' + yr + '</div></article>';
+  }
+  function renderProject(w) {
+    document.getElementById("pj-title").textContent = w.t;
+    document.getElementById("pj-back").href = "#f-visual-identity";
+    document.getElementById("pj-meta").textContent = w.c + (w.sub ? " · " + w.sub : "") + (w.y ? " · " + w.y : "");
+    document.getElementById("pj-shots").innerHTML = w.imgs.map(function (im) {
+      return '<figure><img src="' + esc(im.f) + '" alt="' + esc(im.a) + '" width="1080" height="1440" loading="lazy"></figure>';
+    }).join("");
+    document.getElementById("pj-story").innerHTML = (w.story || []).map(function (b) {
+      if (typeof b === "string") return "<p>" + esc(b) + "</p>";
+      return '<div class="chips">' + b.colors.map(function (k) {
+        return '<span class="chip"><i style="--c:' + esc(k.c) + '"></i>' + esc(k.n) + '</span>';
+      }).join("") + "</div>";
+    }).join("");
+    document.title = w.t + " · Adriana Coletta";
+  }
+  document.getElementById("featured").innerHTML = WORKS.slice(0, 3).map(card).join("");
+
+  /* cartelle */
+  var FOLDERS = [
+    { t: "Visual identity", slug: "visual-identity", sub: "", items: WORKS },
+    { t: "Loghi", slug: "loghi", sub: "Una raccolta di marchi", items: [] }
+  ];
+  function count(n) { return n === 0 ? "Vuota per ora" : n === 1 ? "1 progetto" : n + " progetti"; }
+  function folderCard(f) {
+    var inside = f.items.length
+      ? f.items.slice(0, 4).map(function (w) { return '<img src="' + esc(w.imgs[0].f) + '" alt="" loading="lazy">'; }).join("")
+      : '<span class="empty">in arrivo…</span>';
+    return '<a class="card folder" href="#f-' + esc(f.slug) + '"><div class="cover">' + inside + '</div>' +
+      '<div class="meta"><h3>' + esc(f.t) + '</h3><span class="tag">' + count(f.items.length) + '</span><span class="go">Apri →</span></div></a>';
+  }
+  function renderFolder(f) {
+    document.getElementById("fd-title").textContent = f.t;
+    var fm = document.getElementById("fd-meta");
+    fm.textContent = f.sub ? f.sub + " · " + count(f.items.length) : "";
+    fm.hidden = !f.sub;
+    document.getElementById("fd-grid").innerHTML = f.items.length ? f.items.map(card).join("") : '<p class="empty-note">Qui dentro non c\'è ancora niente. Presto!</p>';
+    document.title = f.t + " · Adriana Coletta";
+  }
+  document.getElementById("all").innerHTML = FOLDERS.map(folderCard).join("");
+
+  /* ---------- email (un solo posto da cambiare) ---------- */
+  var EMAIL = "adrianacolettadesign@gmail.com";
+  var ml = document.getElementById("mail-link");
+  ml.textContent = EMAIL;
+  var cp = document.getElementById("mail-copy");
+  cp.addEventListener("click", function () {
+    function ok() { cp.textContent = "Copiato!"; setTimeout(function () { cp.textContent = "Copia indirizzo"; }, 2000); }
+    function old() {
+      var t = document.createElement("textarea"); t.value = EMAIL; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { cp.textContent = EMAIL; }
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(ok, old); else old();
+  });
+
+  /* ---------- lavagna ---------- */
+  var cv = document.getElementById("board"), ctx = cv.getContext("2d");
+  var color = INK, drawing = false, lx = 0, ly = 0;
+  function fit() {
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (!w || !h) return;
+    var dpr = window.devicePixelRatio || 1;
+    if (cv.width === Math.round(w * dpr) && cv.height === Math.round(h * dpr)) return;
+    var old = document.createElement("canvas");
+    old.width = cv.width; old.height = cv.height;
+    if (cv.width) old.getContext("2d").drawImage(cv, 0, 0);
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineWidth = 6; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    if (old.width) ctx.drawImage(old, 0, 0, old.width / dpr, old.height / dpr);
+  }
+  function pos(e) { var r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  cv.addEventListener("pointerdown", function (e) {
+    fit(); drawing = true; cv.setPointerCapture(e.pointerId);
+    var p = pos(e); lx = p[0]; ly = p[1];
+    ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 0.1, ly + 0.1); ctx.stroke();
+  });
+  cv.addEventListener("pointermove", function (e) {
+    if (!drawing) return;
+    var p = pos(e);
+    ctx.strokeStyle = color; ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(p[0], p[1]); ctx.stroke();
+    lx = p[0]; ly = p[1];
+  });
+  function stop() { drawing = false; }
+  cv.addEventListener("pointerup", stop); cv.addEventListener("pointercancel", stop);
+  document.getElementById("clear").addEventListener("click", function () {
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.restore();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".swatch"), function (s) {
+    s.addEventListener("click", function () {
+      color = s.getAttribute("data-c");
+      Array.prototype.forEach.call(document.querySelectorAll(".swatch"), function (o) { o.setAttribute("aria-pressed", o === s); });
+    });
+  });
+  window.addEventListener("resize", fit);
+
+  /* ---------- navigazione ---------- */
+  var PAGES = ["home", "lavori", "contatti", "progetto", "cartella"];
+  function show() {
+    var id = (location.hash || "#home").slice(1);
+    if (id.indexOf("p-") === 0) {
+      var pj = WORKS.filter(function (w) { return w.slug === id.slice(2); })[0];
+      if (pj) { renderProject(pj); id = "progetto"; } else { id = "lavori"; }
+    } else if (id.indexOf("f-") === 0) {
+      var fd = FOLDERS.filter(function (f) { return f.slug === id.slice(2); })[0];
+      if (fd) { renderFolder(fd); id = "cartella"; } else { id = "lavori"; }
+    }
+    if (PAGES.indexOf(id) < 0) id = "home";
+    if (id !== "progetto" && id !== "cartella") document.title = "Adriana Coletta";
+    var navId = (id === "progetto" || id === "cartella") ? "lavori" : id;
+    PAGES.forEach(function (p) { document.getElementById(p).hidden = (p !== id); });
+    document.body.setAttribute("data-page", navId);
+    Array.prototype.forEach.call(document.querySelectorAll("[data-nav]"), function (a) {
+      if (a.getAttribute("data-nav") === navId) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    window.scrollTo(0, 0);
+    if (id === "home") fit();
+  }
+  window.addEventListener("hashchange", show);
+  show();
+  fit();
+</script>
+
+</body>
+</html>
